@@ -5,7 +5,7 @@ import { View, Text, StyleSheet } from 'react-native'
 const TrackCreateScreen = () => {
 
     return (
-        <View>
+        <View style={style.viewStyle}>
             <Text>TrackCreateScreen
             </Text>
         </View>
@@ -14,7 +14,7 @@ const TrackCreateScreen = () => {
 
 const style = StyleSheet.create({
     viewStyle: {
-
+        flex:1,
     },
     textStyle: {
         

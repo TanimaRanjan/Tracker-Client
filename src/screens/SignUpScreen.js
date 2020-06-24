@@ -9,15 +9,20 @@ const SignUpScreen = ({navigation}) => {
             <Text>SignUpScreen
             </Text>
             <Button 
-            title="Go to signIn" 
-            onPress={() => navigation.navigate('SignIn')} 
+                title="Go to Sign In" 
+                onPress={() => navigation.navigate('SignIn')} 
             />
+            <Button 
+                title="Go to main flow In" 
+                onPress={() => navigation.navigate('mainFlow')} 
+        />
         </View>
     )
 }
 
 const style = StyleSheet.create({
     viewStyle: {
+        flex:1,
         margin:20
     },
     textStyle: {
