@@ -7,7 +7,7 @@ import Spacer from '../components/Spacer';
 const SignInScreen = ({navigation}) => {
 
     return (
-        <View>
+        <View style={style.viewStyle}>
 
         <Spacer><Text h4
         style={style.textStyle}
@@ -37,10 +37,17 @@ const SignInScreen = ({navigation}) => {
     )
 }
 
+SignInScreen.navigationOptions = () => {
+    return {
+      header: () => false,
+    };
+  };
+
 const style = StyleSheet.create({
     viewStyle: {
         flex:1,
-       // justifyContent:"space-evenly",
+       justifyContent:"center",
+       marginTop:-180
         // alignContent:"center",
         // margin:20
     },
