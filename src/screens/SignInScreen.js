@@ -1,39 +1,30 @@
-import React from 'react'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import React, { useContext } from 'react'
 import { View, StyleSheet } from 'react-native'
-import { Text, Button, Input } from 'react-native-elements'
-import Spacer from '../components/Spacer';
+import { Context  as AuthContext } from '../context/AuthContext'
+import AuthForm from '../components/AuthForm';
+import NavLink from '../components/NavLink';
 
 const SignInScreen = ({navigation}) => {
 
+    const { state, signin } = useContext(AuthContext)
+
     return (
+
         <View style={style.viewStyle}>
+            <AuthForm 
+                headerText='Sign In to Tracker'
+                buttonTitle='Sign In'
+                errorMessage={state.errorMessage}
+                onSubmit={({email, password}) => signin({email, password})}
+            
+            />
 
-        <Spacer><Text h4
-        style={style.textStyle}
-        >Sign In for Tracker</Text></Spacer>
-       
-        <Spacer><Input 
-            label="Email Address"
-            placeholder="email"   
-        /></Spacer>
-
-        <Spacer><Input 
-            label="Password"
-            placeholder="password"
-        /></Spacer>
-
-        <Spacer><Button 
-            title="Go to Sign Up" 
-            onPress={() => navigation.navigate('SignUp')} 
-        /></Spacer>
-
-        <Spacer>
-            <Button 
-            title="Sign In" 
-            onPress={() => navigation.navigate('mainFlow')} 
-        /></Spacer>
+            <NavLink 
+                linkText="Don't have an account ? Sign up"
+                routeName='SignUp'
+            />
         </View>
+
     )
 }
 
@@ -48,8 +39,6 @@ const style = StyleSheet.create({
         flex:1,
        justifyContent:"center",
        marginTop:-180
-        // alignContent:"center",
-        // margin:20
     },
     textStyle: {
         textAlign:"center"

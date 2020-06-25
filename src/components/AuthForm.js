@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { Text, Button, Input } from 'react-native-elements'
 import Spacer from '../components/Spacer';
-import { Context  as AuthContext } from '../context/AuthContext'
+// import { Context  as AuthContext } from '../context/AuthContext'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const AuthForm = ({headerText, errorMessage, onSubmit, buttonTitle}) => {
@@ -55,12 +55,7 @@ const AuthForm = ({headerText, errorMessage, onSubmit, buttonTitle}) => {
                 onPress={() => onSubmit({email, password})}              
             /></Spacer>
 
-            <TouchableOpacity
-            onPress={() => navigation.navigate('SignIn')}>
-                <Spacer>
-                <Text style={style.linkStyle}>Already have an account ? Sign in instead</Text>
-                </Spacer>
-            </TouchableOpacity>
+           
 
         </>
     )
@@ -80,11 +75,6 @@ const style = StyleSheet.create({
     errorMessage: {
         textAlign:"center",
         color:'red',
-        fontSize:18
-    }, 
-    linkStyle : {
-        textAlign:"center",
-        color:'blue',
         fontSize:18
     }
 })

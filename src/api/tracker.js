@@ -1,8 +1,11 @@
 import axios from 'axios'
 
-
 // Server start 
+//ngrok http 3000
 
 export default axios.create({
-    baseURL:'http://8f32c029ef19.ngrok.io'
+    baseURL:'http://c9d6744da2ad.ngrok.io'
 })
+
+
+//<NavigationEvents onWillFocus={clearErrorMessage}

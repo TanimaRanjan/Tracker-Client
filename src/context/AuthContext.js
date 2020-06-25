@@ -6,7 +6,7 @@ import { navigate } from '../navigationRef'
 const authReducer = ( state, action) => {
 
     switch(action.type) {
-        case 'ADD_TOKEN':
+        case 'SIGN_IN':
             return {
                 token:action.payload,
                 errorMessage:'' 
@@ -19,8 +19,7 @@ const authReducer = ( state, action) => {
 
 }
 
-const signup =  (dispatch) => {
-    return async ({email, password}) => {
+const signup =  (dispatch) =>  async ({email, password}) => {
         // Make api request 
         try {
             const response = await trackerAPI.post('/signup', {email,password})
@@ -30,7 +29,7 @@ const signup =  (dispatch) => {
             await AsyncStorage.setItem('token', response.data.token)    
 
             // Dispatch action to update the token key
-            dispatch({type:'ADD_TOKEN', payload:response.data.token})
+            dispatch({type:'SIGN_IN', payload:response.data.token})
 
             // Navigate to main flow
             navigate('TrackList')
@@ -39,32 +38,36 @@ const signup =  (dispatch) => {
             //error.response.data
             dispatch({type: 'ADD_ERROR', payload:'Something went wrong with signup'})
         }
-        
-        // If signed up,then change status to authenticated
-
-        // If signing up failed - show error
 
     }
-}
 
-const signin = (dispatch) => {
-    return ({email, password}) => {
-        // Make API request 
 
-        // If signed un update thestatus to autheticated
+const signin = (dispatch) =>  async ({email, password}) => {
 
-        // If sign in failed = show error
+    try {
+
+    
+        const response = await trackerAPI.post('/signin', {email,password})
+
+        await AsyncStorage.setItem('token', response.data.token)    
+
+        dispatch({type:'SIGN_IN', payload:response.data.token})
+
+        navigate('TrackList')
+
+        } catch (error) {
+            dispatch({type: 'ADD_ERROR', payload:'Something went wrong with signup'})
+        }
     }
-}
 
-const signout = (dispatch) => {
-    return ({email}) => {
+
+const signout = (dispatch) =>  ({email}) => {
 
         // Make API request
         // Delete JWT token ?
 
     }
-}
+
 
 
 export const {Provider, Context } = createDataContext(
