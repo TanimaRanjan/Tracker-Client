@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native'
 import { Text, Button, Input } from 'react-native-elements'
 import Spacer from '../components/Spacer';
 import { Context  as AuthContext } from '../context/AuthContext'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SignUpScreen = ({navigation}) => {
 
@@ -56,6 +57,13 @@ const SignUpScreen = ({navigation}) => {
                 onPress={() => signup({email, password})}              
             /></Spacer>
 
+            <TouchableOpacity
+            onPress={() => navigation.navigate('SignIn')}>
+                <Spacer>
+                <Text style={style.linkStyle}>Already have an account ? Sign in instead</Text>
+                </Spacer>
+            </TouchableOpacity>
+
         </View>
     )
 }
@@ -80,7 +88,12 @@ const style = StyleSheet.create({
     errorMessage: {
         textAlign:"center",
         color:'red',
-        fontSize:20
+        fontSize:18
+    }, 
+    linkStyle : {
+        textAlign:"center",
+        color:'blue',
+        fontSize:18
     }
 })
 
