@@ -65,8 +65,18 @@ const signin = (dispatch) =>  async ({email, password}) => {
         }
     }
 
+    const autoSignIn = dispatch => async() => {
+        const token = await AsyncStorage.getItem('token')
+        if(token) {
+            dispatch({type:'SIGN_IN', payload:token})
+            navigate('TrackList')
+        } else {
+            navigate('SignUp')
+        }
+        
+    }
 
-const signout = (dispatch) =>  ({email}) => {
+const signout = dispatch =>  ({email}) => {
 
         // Make API request
         // Delete JWT token ?
@@ -75,10 +85,10 @@ const signout = (dispatch) =>  ({email}) => {
 
 
 
-export const {Provider, Context } = createDataContext(
+export const { Provider, Context } = createDataContext(
         authReducer, 
         {
-            signup, signin,signout, clearErrorMessage},
+            signup, signin,signout, clearErrorMessage, autoSignIn},
         {   
             token:null, errorMessage:''
         }
