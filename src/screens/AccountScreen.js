@@ -33,7 +33,8 @@ const style = StyleSheet.create({
         // marginTop:-180
     },
     textStyle: {
-        textAlign:"center"
+        textAlign:"center",
+        marginTop:30
     },
     errorMessage: {
         textAlign:"center",

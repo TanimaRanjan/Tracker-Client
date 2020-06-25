@@ -1,14 +1,21 @@
 import React from 'react'
+import { StyleSheet } from 'react-native'
+import { SafeAreaView } from 'react-navigation'
+import { Text } from 'react-native-elements'
+import Map from '../components/Map'
+import Spacer from '../components/Spacer'
 
-import { View, Text, StyleSheet } from 'react-native'
 
 const TrackCreateScreen = () => {
 
     return (
-        <View style={style.viewStyle}>
-            <Text>TrackCreateScreen
+        <SafeAreaView forceInset={{top:'always'}} >
+        <Spacer>
+            <Text h4 style={style.textStyle}>TrackCreateScreen
             </Text>
-        </View>
+        </Spacer>
+            <Map />
+        </SafeAreaView>
     )
 }
 
@@ -17,7 +24,8 @@ const style = StyleSheet.create({
         flex:1,
     },
     textStyle: {
-        
+        textAlign:'center',
+        marginTop:30
     }
 })
 
