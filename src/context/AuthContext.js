@@ -11,6 +11,11 @@ const authReducer = ( state, action) => {
                 token:action.payload,
                 errorMessage:'' 
             }
+        case 'SIGN_OUT':
+                return {
+                    ...state,
+                    token:null
+                }            
         case 'ADD_ERROR':
             return { ...state, errorMessage: action.payload}; 
         case 'CLEAR_ERROR':
@@ -76,10 +81,18 @@ const signin = (dispatch) =>  async ({email, password}) => {
         
     }
 
-const signout = dispatch =>  ({email}) => {
+const signout = dispatch =>  async () => {
 
         // Make API request
-        // Delete JWT token ?
+        // Delete JWT token ?t
+        try {
+            await AsyncStorage.removeItem('token')
+            dispatch({type:'SIGN_OUT'})
+            navigate('SignIn')
+        } catch (error) {
+            dispatch({type: 'ADD_ERROR', payload:'Something went wrong with sign out'})
+        }
+        
 
     }
 
