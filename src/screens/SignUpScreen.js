@@ -53,10 +53,7 @@ const SignUpScreen = ({navigation}) => {
 
             <Spacer><Button 
                 title="Sign Up" 
-                onPress={() => signup(email, password, () => navigation.navigate('mainFlow'))} 
-
-                //    () => 
-                
+                onPress={() => signup({email, password})}              
             /></Spacer>
 
         </View>
