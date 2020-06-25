@@ -16,8 +16,8 @@ import LoadingScreen from './src/screens/LoadingScreen'
 const switchNavigator = createSwitchNavigator({
     LoadPage:LoadingScreen,
     loginFlow: createStackNavigator({
+      SignIn: SignInScreen,
       SignUp: SignUpScreen,
-      SignIn: SignInScreen
     }),
     mainFlow: createBottomTabNavigator({
       trackListFlow: createStackNavigator({

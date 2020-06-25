@@ -26,7 +26,6 @@ const authReducer = ( state, action) => {
 
 }
 
-
 const clearErrorMessage = dispatch => () => dispatch({type: 'CLEAR_ERROR'})
 
 const signup =  (dispatch) =>  async ({email, password}) => {
