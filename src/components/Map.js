@@ -1,6 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import MapView , {Marker , Polyline} from 'react-native-maps'
+
+const MY_LAT=40.724670
+const MY_LNG=-73.9511656
+
 const Map = () => {
 
     let points = []
@@ -8,32 +12,31 @@ const Map = () => {
         if(i%2 ==0)  {
             points.push(
                 {
-                    latitude:40.692532 + i* 0.001,
-                    longitude:-73.990997 + i * 0.001
+                    latitude:MY_LAT + i* 0.00001,
+                    longitude:-73.9511656 + i * 0.001
                 }
             )
         } else {
             points.push(
                 {
-                    latitude:40.692532 - i* 0.001,
-                    longitude:-73.990997 + i * 0.002
+                    latitude:40.724670 - i* 0.001,
+                    longitude:-73.9511656 + i * 0.0002
                 }
             )
         }   
-        
     }
     
 
     return (
         <MapView style={styles.mapStyle} 
         initialRegion={{
-            latitude: 40.692532,
-            longitude: -73.990997,
+            latitude: 40.724670,
+            longitude: -73.9511656,
             latitudeDelta: 0.1,
             longitudeDelta: 0.1
           }}
           >
-          
+          <Marker coordinate={{ latitude:  40.724670, longitude: -73.9511656, }} />
             <Polyline coordinates={points} />
           </MapView>
     )
