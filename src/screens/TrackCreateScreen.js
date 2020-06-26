@@ -1,43 +1,21 @@
-// import '../_mockLocation/_mockLocation'
+import '../_mockLocation/_mockLocation'
 
-import React, { useEffect , useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { Text } from 'react-native-elements'
-import { requestPermissionsAsync, watchPositionAsync, Accuracy } from 'expo-location'
+// import { requestPermissionsAsync, watchPositionAsync, Accuracy } from 'expo-location'
+import { Context as LocationContext } from '../context/LocationContext'
 import Map from '../components/Map'
 import Spacer from '../components/Spacer'
-
-
+import useLocation from '../hooks/useLocation'
 
 const TrackCreateScreen = () => {
 
-    const [error, setError ] = useState(null)
+   
+    const { addLocation } = useContext(LocationContext)
 
-    const startWatching = async () => {
-        try {
-          const { granted } = await requestPermissionsAsync();
-
-          await watchPositionAsync({
-              accuracy: Accuracy.BestForNavigation,
-              timeInterval:1000,
-              distanceInterval:1
-          }, (location) => {
-              console.log('MY LOCATION ',location)
-          })
-
-
-          if (!granted) {
-            throw new Error('Location permission not granted');
-          }
-        } catch (error) {
-            setError(error);
-        }
-      };
-
-    useEffect(() => {
-        startWatching()
-    }, [])
+    const [error] = useLocation(addLocation)
 
     return (
         <SafeAreaView forceInset={{top:'always'}} >
