@@ -17,6 +17,8 @@ const TrackCreateScreen = ({ isFocused }) => {
 
     const [error] = useLocation(isFocused,  callback)
 
+    console.log(state.locations.length)
+
     return (
         <SafeAreaView forceInset={{top:'always'}} >
         <Spacer>
