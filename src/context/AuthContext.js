@@ -32,7 +32,6 @@ const signup =  (dispatch) =>  async ({email, password}) => {
         // Make api request 
         try {
             const response = await trackerAPI.post('/signup', {email,password})
-            console.log(response.data.token)
 
             // Store the token in storage
             await AsyncStorage.setItem('token', response.data.token)    
