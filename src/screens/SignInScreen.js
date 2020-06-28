@@ -21,9 +21,7 @@ const SignInScreen = ({navigation}) => {
                 buttonTitle='Sign In'
                 errorMessage={state.errorMessage}
                 onSubmit={({email, password}) => signin({email, password})}
-            
             />
-
             <NavLink 
                 linkText="Don't have an account ? Sign up"
                 routeName='SignUp'

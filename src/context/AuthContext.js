@@ -46,15 +46,11 @@ const signup =  (dispatch) =>  async ({email, password}) => {
             //error.response.data
             dispatch({type: 'ADD_ERROR', payload:'Something went wrong with signup'})
         }
-
     }
 
-
 const signin = (dispatch) =>  async ({email, password}) => {
-
     try {
-
-    
+  
         const response = await trackerAPI.post('/signin', {email,password})
 
         await AsyncStorage.setItem('token', response.data.token)    
@@ -90,16 +86,15 @@ const signout = dispatch =>  async () => {
         } catch (error) {
             dispatch({type: 'ADD_ERROR', payload:'Something went wrong with sign out'})
         }
-        
-
     }
-
-
 
 export const { Provider, Context } = createDataContext(
         authReducer, 
-        {
-            signup, signin,signout, clearErrorMessage, autoSignIn},
+        {   signup, 
+            signin,
+            signout, 
+            clearErrorMessage, 
+            autoSignIn},
         {   
             token:null, errorMessage:''
         }
