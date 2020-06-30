@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import { View, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import {Context as AuthContext } from '../context/AuthContext'
 import { SafeAreaView } from 'react-navigation'
 import { Text, Button } from 'react-native-elements'
@@ -33,7 +33,8 @@ const style = StyleSheet.create({
         // marginTop:-180
     },
     textStyle: {
-        textAlign:"center"
+        textAlign:"center",
+        marginTop:30
     },
     errorMessage: {
         textAlign:"center",

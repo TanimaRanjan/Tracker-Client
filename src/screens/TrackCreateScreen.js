@@ -1,14 +1,34 @@
-import React from 'react'
+import '../_mockLocation/_mockLocation'
+import React, { useContext , useCallback } from 'react'
+import { StyleSheet } from 'react-native'
+import { SafeAreaView, withNavigationFocus } from 'react-navigation'
+import { Text } from 'react-native-elements'
+import { Context as LocationContext } from '../context/LocationContext'
+import Map from '../components/Map'
+import Spacer from '../components/Spacer'
+import useLocation from '../hooks/useLocation'
+import TrackForm from '../components/TrackForm'
 
-import { View, Text, StyleSheet } from 'react-native'
+const TrackCreateScreen = ({ isFocused }) => {
 
-const TrackCreateScreen = () => {
+    const { state, addLocation } = useContext(LocationContext)
+
+    const callback = useCallback((location) => addLocation(location, state.recording), [state.recording])
+
+    const [error] = useLocation(isFocused,  callback)
+
+    console.log(state.locations.length)
 
     return (
-        <View style={style.viewStyle}>
-            <Text>TrackCreateScreen
+        <SafeAreaView forceInset={{top:'always'}} >
+        <Spacer>
+            <Text h4 style={style.textStyle}>TrackCreateScreen
             </Text>
-        </View>
+        </Spacer>
+            <Map />
+            {error ? <Text>Please enable location services </Text> : null }
+            <TrackForm />
+        </SafeAreaView>
     )
 }
 
@@ -17,8 +37,11 @@ const style = StyleSheet.create({
         flex:1,
     },
     textStyle: {
-        
+        textAlign:'center',
+        marginTop:30
     }
 })
 
-export default TrackCreateScreen
+export default withNavigationFocus(TrackCreateScreen)
+
+

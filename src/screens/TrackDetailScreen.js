@@ -1,14 +1,10 @@
 import React from 'react'
-
 import { View, Text, StyleSheet } from 'react-native'
-
-const TrackDetailScreen = ({navigation}) => {
-
+const TrackDetailScreen = () => {
     return (
         <View>
             <Text>TrackDetailScreen
             </Text>
-          
         </View>
     )
 }

@@ -1,20 +1,15 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { StyleSheet } from 'react-native'
 import { Text, Button, Input } from 'react-native-elements'
 import Spacer from '../components/Spacer';
-// import { Context  as AuthContext } from '../context/AuthContext'
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const AuthForm = ({headerText, errorMessage, onSubmit, buttonTitle}) => {
-
-   // const { state, signup } = useContext(AuthContext)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
      return (
         <>
-
             <Spacer>
                 <Text h4
                     style={style.textStyle}>
@@ -45,7 +40,6 @@ const AuthForm = ({headerText, errorMessage, onSubmit, buttonTitle}) => {
 
             /></Spacer>
 
-
             {errorMessage ? 
                 <Text style={style.errorMessage}>{errorMessage}</Text> : null }
 
@@ -54,8 +48,6 @@ const AuthForm = ({headerText, errorMessage, onSubmit, buttonTitle}) => {
                 title={buttonTitle}
                 onPress={() => onSubmit({email, password})}              
             /></Spacer>
-
-           
 
         </>
     )
