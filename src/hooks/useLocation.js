@@ -5,25 +5,26 @@ export default (shouldTrack, callback) => {
 
         const [error, setError ] = useState(null)
 
-        // const [subscriber, setSubscriber ] = useState(null)
+       //  const [subscriber, setSubscriber ] = useState(null)
 
         useEffect(() => {
-            const startWatching = async () => {
             let subscriber
+
+            const startWatching = async () => {
+
                 try {
                     const { granted } = await requestPermissionsAsync();
-    
+                    if (!granted) {
+                        throw new Error('Location permission not granted');
+                    }
                     subscriber = await watchPositionAsync({
-                    accuracy: Accuracy.BestForNavigation,
-                    timeInterval:10000000,
-                    distanceInterval:100
-                },
+                            accuracy: Accuracy.BestForNavigation,
+                            timeInterval:10000000,
+                            distanceInterval:100
+                    },
                     callback 
                 )
-    
-                if (!granted) {
-                    throw new Error('Location permission not granted');
-                }
+
                 } catch (error) {
                     setError(error);
                 }
