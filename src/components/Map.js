@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { View, Text, StyleSheet, ActivityIndicator} from 'react-native'
-import MapView , {Marker , Polyline, Circle} from 'react-native-maps'
+import { StyleSheet, ActivityIndicator} from 'react-native'
+import MapView , {Marker , Circle} from 'react-native-maps'
 import {Context as LocationContext } from '../context/LocationContext'
 
 // const MY_LAT=40.724670
