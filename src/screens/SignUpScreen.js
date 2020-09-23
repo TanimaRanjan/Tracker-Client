@@ -7,7 +7,7 @@ import NavLink from '../components/NavLink';
 
 const SignUpScreen = () => {
 
-    const { state, signup, clearErrorMessage } = useContext(AuthContext)
+    const { state:{errorMessage}, signup, clearErrorMessage } = useContext(AuthContext)
 
      return (
         <View style={style.viewStyle}>
@@ -17,7 +17,7 @@ const SignUpScreen = () => {
             <AuthForm 
                 headerText='Sign Up for Tracker'
                 buttonTitle='Sign Up'
-                errorMessage={state.errorMessage}
+                errorMessage={errorMessage}
                 onSubmit={({email, password}) => signup({email, password})}
             
             />
