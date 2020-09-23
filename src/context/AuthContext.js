@@ -44,7 +44,8 @@ const signup =  (dispatch) =>  async ({email, password}) => {
 
         } catch (error) {
             //error.response.data
-            dispatch({type: 'ADD_ERROR', payload:'Something went wrong with signup'})
+            console.log(error)
+            dispatch({type: 'ADD_ERROR', payload:'Something went wrong with Sign Up'})
         }
     }
 
@@ -60,7 +61,7 @@ const signin = (dispatch) =>  async ({email, password}) => {
         navigate('TrackList')
 
         } catch (error) {
-            dispatch({type: 'ADD_ERROR', payload:'Something went wrong with signup'})
+            dispatch({type: 'ADD_ERROR', payload:'Something went wrong with Sign In'})
         }
     }
 
