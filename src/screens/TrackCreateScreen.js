@@ -22,7 +22,7 @@ const TrackCreateScreen = ({ isFocused }) => {
     return (
         <SafeAreaView forceInset={{top:'always'}} >
         <Spacer>
-            <Text h4 style={style.textStyle}>TrackCreateScreen
+            <Text h4 style={style.textStyle}>Track you route
             </Text>
         </Spacer>
             <Map />
