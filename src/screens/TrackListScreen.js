@@ -1,10 +1,10 @@
 import React from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native'
-
+import { View, Button, StyleSheet } from 'react-native'
+import { Text } from 'react-native-elements'
 const TrackListScreen = ({navigation}) => {
     return (
         <View>
-            <Text>TrackListScreen
+            <Text h4 style={style.textStyle}>Track list
             </Text>
             <Button title="Go to track detail" 
             onPress = {() => { 
@@ -20,7 +20,8 @@ const style = StyleSheet.create({
 
     },
     textStyle: {
-        
+        textAlign:'center',
+        marginTop:30
     }
 })
 
