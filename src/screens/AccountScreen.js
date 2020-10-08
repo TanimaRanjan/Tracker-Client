@@ -14,7 +14,7 @@ const AccountScreen = () => {
         <Spacer>
         <Text h4
             style={style.textStyle}>
-            Account 
+            Account
         </Text>
         </Spacer>
         <Spacer>
